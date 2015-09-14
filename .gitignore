@@ -67,9 +67,3 @@ target
 #Gradle
 **/.gradle/**
 **/build/**
-
-# Application specific files #
-**/*.properties
-*.properties
-config.json
-img

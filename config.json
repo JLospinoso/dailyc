@@ -1,0 +1,10 @@
+{
+  "imageDirectory": "../img",
+  "subscribers": [
+    "5551234567"
+  ],
+  "messages": [
+    "Hello world!",
+    "Foo!"
+  ]
+}
