@@ -1,0 +1,4 @@
+gradle-build:
+ script:
+ - gradle build
+ type: build

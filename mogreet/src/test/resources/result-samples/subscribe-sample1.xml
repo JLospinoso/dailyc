@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><response code="1" status="success">
+    <message><![CDATA[opt status updated]]></message>
+    <number><![CDATA[15558675309]]></number>
+    <campaign id="199278">
+        <status code="1"><![CDATA[OPTEDIN]]></status>
+    </campaign>
+</response>

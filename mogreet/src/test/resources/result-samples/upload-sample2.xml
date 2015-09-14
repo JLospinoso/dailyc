@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><response code="0" status="failure">
+    <messageResponse>media correctly uploaded</messageResponse>
+    <media>
+        <name>test_image.jpg</name>
+        <content_id>5435111</content_id>
+        <smart_url>http://m.mogreet.com/oc/apxzik6z2l4</smart_url>
+    </media>
+</response>

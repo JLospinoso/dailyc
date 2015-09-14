@@ -1,0 +1,23 @@
+apply plugin:'java'
+
+group = 'net.lospi.dailyc'
+description = 'Mogreet Harness'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.+'
+    testCompile 'org.slf4j:slf4j-simple:1.+'
+
+    compile 'org.apache.httpcomponents:httpclient:4.+'
+    compile 'org.apache.httpcomponents:httpmime:4.+'
+
+    testCompile 'org.testng:testng:6.9.+'
+    testCompile 'org.mockito:mockito-all:1.8.+'
+}
+
+test {
+    useTestNG()
+}
