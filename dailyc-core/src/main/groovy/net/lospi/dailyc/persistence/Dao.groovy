@@ -8,6 +8,10 @@ import net.lospi.dailyc.util.Hasher
 class Dao {
     Hasher hasher
 
+    List<EmailSubscriber> loadEmailSubscribers(List<String> emailSubscribers) {
+        emailSubscribers.collect{EmailSubscriber.findOrSaveByAddress(it)}
+    }
+
     List<Subscriber> loadSubscribers(List<String> subscribers) {
         subscribers.collect{Subscriber.findOrSaveByNumber(it)}
     }
@@ -49,6 +53,13 @@ class Dao {
         subscribers
     }
 
+    List<Subscriber> getEmailSubscribers() {
+        def emailSubscribers = EmailSubscriber.getAll()
+        if(emailSubscribers.size() == 0)
+            throw new NoSubscribersException()
+        emailSubscribers
+    }
+
     SentMms createSentMms(Subscriber subscriber, MessageBody messageBody, ImageFile imageFile, Date sentDate) {
         SentMms sentMms = new SentMms(subscriber: subscriber, messageBody: messageBody, imageFile: imageFile,
                 sentDate: sentDate)
@@ -56,6 +67,18 @@ class Dao {
         messageBody.lastUse = sentDate
         imageFile.lastUse = sentDate
         subscriber.save()
+        messageBody.save()
+        imageFile.save()
+        sentMms.save()
+    }
+
+    SentEmail createSentEmail(EmailSubscriber emailSubscriber, MessageBody messageBody, ImageFile imageFile, Date sentDate) {
+        SentEmail sentMms = new SentEmail(emailSubscriber: emailSubscriber, messageBody: messageBody, imageFile: imageFile,
+                sentDate: sentDate)
+        emailSubscriber.lastUse = sentDate
+        messageBody.lastUse = sentDate
+        imageFile.lastUse = sentDate
+        emailSubscriber.save()
         messageBody.save()
         imageFile.save()
         sentMms.save()

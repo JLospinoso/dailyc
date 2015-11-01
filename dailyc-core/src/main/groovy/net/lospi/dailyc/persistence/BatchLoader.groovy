@@ -20,6 +20,10 @@ class BatchLoader {
         (List<String>) getKey("subscribers")
     }
 
+    List<String> getEmailSubscribers() {
+        (List<String>) getKey("emailSubscribers")
+    }
+
     private File getKeyFile(String key) {
         String path = getKey(key)
         File file = new File(path)

@@ -1,6 +1,7 @@
 package net.lospi.dailyc.comm
 
 import groovy.util.logging.Slf4j
+import net.lospi.dailyc.core.EmailSubscriber
 import net.lospi.dailyc.core.MessageBody
 import net.lospi.dailyc.core.Subscriber
 import net.lospi.mogreet.MogreetManager

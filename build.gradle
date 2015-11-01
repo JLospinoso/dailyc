@@ -1,8 +1,8 @@
 apply plugin:'java'
 apply plugin:'groovy'
 
-version = '0.1.0'
-description = 'MMS batch service'
+version = '0.2.0'
+description = 'A multimedia message and email batch service'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.6'

@@ -3,6 +3,9 @@
   "subscribers": [
     "5551234567"
   ],
+  "emailSubscribers": [
+    "dailyc@lospi.net"
+  ],
   "messages": [
     "Hello world!",
     "Foo!"

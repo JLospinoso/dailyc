@@ -1,1 +1,1 @@
-include 'mogreet', 'dailyc-core'
+include 'mogreet', 'dailyc-core', 'dailyc-mail'

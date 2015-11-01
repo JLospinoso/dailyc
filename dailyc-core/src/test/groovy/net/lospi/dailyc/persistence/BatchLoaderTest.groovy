@@ -46,4 +46,15 @@ class BatchLoaderTest extends Specification {
         then:
         subscribers.containsAll(["1111111111", "1111111112", "1111111113"])
     }
+
+    def "can get email subscribers from config"() {
+        setup:
+        def batchLoader = new BatchLoader(configFile: config, slurper: slurper)
+
+        when:
+        def subscribers = batchLoader.emailSubscribers
+
+        then:
+        subscribers.containsAll(["abc@def.com",  "def@ghi.net", "ghi@jkl.co.uk"])
+    }
 }

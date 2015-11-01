@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     compile project(':mogreet')
+    compile project(':dailyc-mail')
     compile ('org.springframework.boot:spring-boot-starter-actuator',
         'org.codehaus.groovy:groovy-all:2.4.+',
         'org.springframework:spring-context:4.+',

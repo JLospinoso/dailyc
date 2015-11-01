@@ -1,15 +1,14 @@
 apply plugin:'java'
 
 group = 'net.lospi.dailyc'
-description = 'Mogreet API Harness'
+description = 'Apache Commons Email Harness'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile ('org.apache.httpcomponents:httpclient:4.+',
-            'org.apache.httpcomponents:httpmime:4.+',
+    compile ('org.apache.commons:commons-email:1.+',
             'org.slf4j:slf4j-api:1.+')
     testCompile('org.slf4j:slf4j-simple:1.+',
             'org.testng:testng:6.9.+',

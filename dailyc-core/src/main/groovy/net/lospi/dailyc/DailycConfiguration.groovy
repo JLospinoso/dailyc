@@ -2,12 +2,17 @@ package net.lospi.dailyc
 
 import groovy.json.JsonSlurper
 import groovy.util.logging.Slf4j
+import net.lospi.dailyc.comm.MailSender
 import net.lospi.dailyc.comm.MogreetSender
 import net.lospi.dailyc.comm.MogreetSubscriber
 import net.lospi.dailyc.comm.MogreetUploader
 import net.lospi.dailyc.persistence.BatchLoader
 import net.lospi.dailyc.persistence.Dao
 import net.lospi.dailyc.util.Hasher
+import net.lospi.mail.core.EmailSendResponseFactory
+import net.lospi.mail.MailManager
+import net.lospi.mail.multipart.JpegDataSourceFactory
+import net.lospi.mail.multipart.MultipartMailFactory
 import net.lospi.mogreet.MogreetManager
 import net.lospi.mogreet.core.AuthorizationToken
 import net.lospi.mogreet.core.BaseResponse
@@ -55,11 +60,27 @@ class DailycConfiguration {
     private String databaseUsername
     @Value('${database.password}')
     private String databasePassword
+    @Value('${email.userName}')
+    private String emailUserName
+    @Value('${email.password}')
+    private String emailPassword
+    @Value('${email.hostName}')
+    private String emailHostName
+    @Value('${email.sslSmtpPort}')
+    private String sslSmtpPort
+    @Value('${email.attachmentName}')
+    private String emailAttachmentName
+    @Value('${email.fromName}')
+    private String emailFromName
+    @Value('${email.toName}')
+    private String emailToName
+    @Value('${email.from}')
+    private String emailFrom
 
     @Bean
     public DataSource dataSource() {
-        new DriverManagerDataSource( driverClassName:databaseDriver, url:databaseUrl, username:databaseUsername,
-                password:databasePassword )
+        new DriverManagerDataSource(driverClassName:databaseDriver, url:databaseUrl, username:databaseUsername,
+                password:databasePassword)
     }
 
     @Bean
@@ -89,6 +110,16 @@ class DailycConfiguration {
     }
 
     @Bean
+    public MailManager mailManager() {
+        MultipartMailFactory multipartMailFactory = new MultipartMailFactory()
+        EmailSendResponseFactory emailSendResponseFactory = new EmailSendResponseFactory()
+        JpegDataSourceFactory jpegDataSourceFactory = new JpegDataSourceFactory()
+        return new MailManager(emailUserName, emailPassword, emailHostName, sslSmtpPort,
+                emailAttachmentName, emailFromName,
+                emailToName, multipartMailFactory, emailSendResponseFactory, jpegDataSourceFactory)
+    }
+
+    @Bean
     DailycManager dailycBatch() {
         File configFile = new File(configPath)
         Hasher hasher = new Hasher(digest: MessageDigest.getInstance("SHA"))
@@ -99,8 +130,11 @@ class DailycConfiguration {
         MogreetSender sender = new MogreetSender(manager: manager, campaignId: campaignId, from: from)
         MogreetSubscriber subscriber = new MogreetSubscriber(manager: manager, campaignId: campaignId)
         MogreetUploader mogreetUploader = new MogreetUploader(manager: manager)
+        MailManager mailManager = mailManager()
+        MailSender mailSender = new MailSender(from: emailFrom, mailManager: mailManager)
         new DailycManager(mogreetSender: sender, mogreetSubscriber: subscriber,
-                mogreetUploader: mogreetUploader, dao: dao, batchLoader: batchLoader)
+                mogreetUploader: mogreetUploader, dao: dao,
+                batchLoader: batchLoader, mailSender: mailSender)
     }
 
     private AuthorizationToken makeToken() throws IOException {

@@ -75,7 +75,7 @@ public class MogreetManagerIntegrationTest extends AbstractTestNGSpringContextTe
     public void canUpload() throws Exception {
         String fileName = "test_image.jpg";
         File file = new File(imagePath.toUri());
-        UploadImageRequest uploadImageRequest = new UploadImageRequest(fileName, file);
+        UploadImageRequest uploadImageRequest = new UploadImageRequest(fileName, file.getBytes());
 
         UploadResponse uploadResponse = mogreetManager.upload(uploadImageRequest);
         LOG.info(uploadResponse.getXmlResponse());
