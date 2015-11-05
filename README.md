@@ -1,12 +1,6 @@
-[1]: 
-https://jlospinoso.github.io/groovy/gorm/java/spring%20boot/mogreet/software/
-2015/09/14/dailyc-batch-mms-service.html
-[2]: 
-https://jlospinoso.github.io/groovy/gorm/java/spring%20boot/apache%20commons 
-%20email/software/2015/11/04/dailyc-v2.html
-[3]: 
-https://github.com/JLospinoso/dailyc/blob/master/dailyc-core/src/main/resources/
-application.properties
+[1]: https://jlospinoso.github.io/groovy/gorm/java/spring%20boot/mogreet/software/2015/09/14/dailyc-batch-mms-service.html
+[2]: https://jlospinoso.github.io/groovy/gorm/java/spring%20boot/apache%20commons%20email/software/2015/11/04/dailyc-v2.html
+[3]: https://github.com/JLospinoso/dailyc/blob/master/dailyc-core/src/main/resources/application.properties
 [4]: http://www.h2database.com/html/main.html
 [5]: http://gradle.org/
 [6]: https://spring.io/guides/gs/gradle/#_build_your_project_with_gradle_wrapper
