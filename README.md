@@ -68,7 +68,9 @@ add images as you like without having to restart the service (same with
 That should do it!
 	
 ## Version history
-[v0.2.0][2] Provides for email service in addition to multimedia messages
-[v0.1.0][1] Initial release, provides multimedia message subscription, 
+
+* [v0.2.0][2] Provides for email service in addition to multimedia messages
+
+* [v0.1.0][1] Initial release, provides multimedia message subscription, 
 gorm-backed persistence, Spring Batch integration, and a standalone Mogreet API 
 wrapper
