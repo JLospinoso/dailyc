@@ -1,80 +1,245 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://prod.lospi.net/
 
 # dailyc
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Send regularly scheduled MMS/Email.
 
-## Questions Collection [/questions]
+# Group Subscribers
 
-### List All Questions [GET]
+## Subscriber [/subscriber/{id}{?token}]
+
++ Parameters
+    + id: 1234 (string)
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Subscriber Base)
+    + id: 1234 (string, required)
+
+### Retrieve a Subscriber [GET]
 
 + Response 200 (application/json)
+    + Attributes (Subscriber)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+### Update a Subscriber [PUT]
 
-### Create a New Question [POST]
++ Request Update a Subscriber (application/json)
+    + Attributes (Subscriber)
+    
++ Response 201 (application/json)
+    + Attributes (Subscriber)
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+### Delete a Subscriber [DELETE]
 
 + Response 201 (application/json)
+    + Attributes (Subscriber)
 
-    + Headers
+## Subscriber Collection [/subscriber{?token}]
 
-            Location: /questions/2
++ Parameters
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Subscriber Base)
 
-    + Body
+### New Subscriber [POST]
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
++ Request Create a Subscriber (application/json)
+    + Attributes (Subscriber Base)
+
++ Response 201 (application/json)
+    + Attributes (Subscriber)
+
+### List All Subscribers [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[Subscriber])
+
+# Group Images
+
+## Image [/image/{id}{?token}]
+
++ Parameters
+    + id: 1234 (string)
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Image Base)
+    + id: 1234 (string, required)
+
+### Retrieve an Image [GET]
+
++ Response 200 (application/json)
+    + Attributes (Image)
+
+### Update an Image [PUT]
+
++ Request Update an Image (application/json)
+    + Attributes (Image)
+    
++ Response 201 (application/json)
+    + Attributes (Image)
+
+### Delete an Image [DELETE]
+
++ Response 201 (application/json)
+    + Attributes (Image)
+
+## Image Collection [/image{?token}]
+
++ Parameters
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Image Base)
+
+### New Image [POST]
+
++ Request Create an Image (application/json)
+    + Attributes (Image Base)
+
++ Response 201 (application/json)
+    + Attributes (Image)
+
+### List All Images [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[Image])
+
+# Group Messages
+
+## Message [/message/{id}{?token}]
+
++ Parameters
+    + id: 1234 (string)
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Message Base)
+    + id: 1234 (string, required)
+
+### Retrieve a Message [GET]
+
++ Response 200 (application/json)
+    + Attributes (Message)
+
+### Update a Message [PUT]
+
++ Request Update an Message (application/json)
+    + Attributes (Message)
+    
++ Response 201 (application/json)
+    + Attributes (Message)
+
+### Delete a Message [DELETE]
+
++ Response 201 (application/json)
+    + Attributes (Message)
+
+## Message Collection [/message{?token}]
+
++ Parameters
+    + token: AAABBBCCC (string, required)
+
++ Attributes (Message Base)
+
+### New Message [POST]
+
++ Request Create a Message (application/json)
+    + Attributes (Message Base)
+
++ Response 201 (application/json)
+    + Attributes (Message)
+
+### List All Messages [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[Message])
+
+# Group Jobs
+
+## Job [/job/{id}{?token}]
+
++ Parameters
+    + id: 1234 (string)
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Job Base)
+    + id: 1234 (string, required)
+
+### Retrieve a Job [GET]
+
++ Response 200 (application/json)
+    + Attributes (Job)
+
+## Job Collection [/job{?token}]
+
++ Parameters
+    + token: AAABBBCCC (string, required)
+
++ Attributes (Job Base)
+
+### New Job [POST]
+
++ Request Create a Job (application/json)
+    + Attributes (Job Base)
+
++ Response 201 (application/json)
+    + Attributes (Job)
+
+### List All Jobs [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[Job])
+
+# Group Schedules
+
+
+## Schedule [/schedule{?token}]
+
++ Parameters
+    + token: AAABBBCCC (string, required)
+    
++ Attributes (Schedule Base)
+
+### Retrieve the Schedule [GET]
+
++ Response 200 (application/json)
+    + Attributes (Schedule)
+
+### Update the Schedule [PUT]
+
++ Request Update an Image (application/json)
+    + Attributes (Schedule)
+    
++ Response 201 (application/json)
+    + Attributes (Schedule)
+
+# Data Structures
+
+## Subscriber Base (object)
+
++ name: Brawne Lamia (string)
++ phone: 555-111-1111 (string)
++ email: brawne@hyper.ion (string)
+
+## Image Base (object)
+
++ name: img_0010.jpg (required)
++ data: /9j/4AAQSkZJRgABAQEAYABgAAD/4QAWRXhpZgAASUkqAAgAAAAAAAAAAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAr/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AAf/Z (required)
++ hash: MzFEQTQ2QUNFRUI1QTY3NkIxN0M0RDkzODVFQzUwNEZFMkM3RjdGRQ==
++ last_use: `2014-11-11T08:40:51.620Z`
++ send_history_mms: 1, 2, 3 (array[string])
++ send_history_email: 1, 2, 3 (array[string])
+
+## Message Base (object)
+
++ contents: Good morning! (required)
++ last_use: `2014-11-11T08:40:51.620Z`
+
+## Job Base (object)
+
++ subscribers: array[Subscriber] (required)
++ body: [Message] (required)
++ image_file: [Image] (required)
++ sent_date: `2014-11-11T08:40:51.620Z` (required)
+
+## Schedule Base (object)
+
++ plan: weekdays (string, required)
